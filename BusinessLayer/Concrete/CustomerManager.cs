@@ -1,0 +1,45 @@
+﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
+using EntityLayer.Concrete;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BusinessLayer.Concrete
+{
+    public class CustomerManager : ICustomerService
+    {
+        private readonly ICustomerDal _customerDal;
+        public CustomerManager(ICustomerDal customer)
+        {
+            _customerDal = customer; 
+        }
+        public Customer GetById(int id)
+        {
+            return _customerDal.GetById(id);
+        }
+
+        public void TDelete(Customer t)
+        {
+           _customerDal.Delete(t);
+
+        }
+
+        public List<Customer> TGetList()
+        {
+            return _customerDal.GetList();
+        }
+
+        public void TInsert(Customer t)
+        {
+            _customerDal.Insert(t);
+        }
+
+        public void TUpdate(Customer t)
+        {
+            _customerDal.Update(t);
+        }
+    }
+}
